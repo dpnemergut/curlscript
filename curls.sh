@@ -2,14 +2,14 @@
 
 if [ -z "$1" ]; then
     echo "Usage: curls.sh <filename>"
-    echo "  where <filename> is a text file with a URL on each line."
+    echo "  where <filename> is a CSV file with a URL in column H on each line."
     echo
     echo "  Outputs URLs that don't return a 200 status code."
     exit 1
 fi
 
 filename=$1
-while read url; do
+while IFS=, read -r a b c d e f g url; do
     if [ -z "$url" ]; then
         continue
     fi
